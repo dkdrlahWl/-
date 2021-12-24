@@ -29,7 +29,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("------")
-    game = discord.Game("추가 시스템 개발")
+    game = discord.Game("봇이랑 갠으로 가능")
     await client.change_presence(status=discord.Status.online, activity=game)
 
 @client.event
@@ -47,19 +47,19 @@ async def on_message(message):
         TIME = int(time.time())
         if ID in idA:
             if TIME - timeA[idA.index(ID)] < 60:  # 시간이 아직 안 지났을 때
-                embed = discord.Embed(title="", description="1분 마다 받을 수 있습니다.", color=0xFF0000)
+                embed = discord.Embed(title="", description="1분 마다 받을 수 있습니다.", color=0x00FFFF)
                 await message.channel.send(embed=embed)
                 return
             elif TIME - timeA[idA.index(ID)] >= 60:
                 timeA[idA.index(ID)] = int(time.time())
-        give = random.randrange(1, 3) * random.randrange(1000, 10000)
+        give = random.randrange(1, 3) * random.randrange(4000, 10000)
         if ID in idA:  # ID가 있으면 돈을 더함
             moneyA[idA.index(ID)] += give
         elif not ID in idA:  # ID가 없으면 배열에 새로 추가
             idA.append(ID)
             moneyA.append(give)
             timeA.append(int(time.time()))
-        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다. 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x00FF00,)
+        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=a500ff,)
         await message.channel.send(embed=embed)
 
 
@@ -73,10 +73,10 @@ async def on_message(message):
 
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
-            embed = discord.Embed(title="",description=format(moneyA[idA.index(ID)], ",d") + " 원",color=0x118811,)
+            embed = discord.Embed(title="",description=format(moneyA[idA.index(ID)], ",d") + " 원",color=0xFF00FF,)
             await message.channel.send(embed=embed)
         elif not ID in idA:  # ID가 없을 때
-            embed = discord.Embed(title="", description="0 원", color=0x118811)
+            embed = discord.Embed(title="", description="0 원", color=0xFF00FF)
             await message.channel.send(embed=embed)
 
     if cmd == prefix + "올인" or cmd == prefix + "ㅇㅇ":
