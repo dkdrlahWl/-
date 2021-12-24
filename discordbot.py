@@ -20,9 +20,8 @@ while True:
     moneyA.append(int(line[1]))
     timeA.append(int(line[2]))
 f.close()
-token = os.getenv("TOKEN")
-TOKEN = "OTIzMDcxNzM3NTM1NTU3NjQy.YcKrjA.5XWViWW9n-mi1lXTMw8IRBz71Aw"
 
+TOKEN = os.environ.get('BOT_TOKEN')
 
 @client.event
 async def on_ready():
@@ -48,7 +47,7 @@ async def on_message(message):
         TIME = int(time.time())
         if ID in idA:
             if TIME - timeA[idA.index(ID)] < 60:  # 시간이 아직 안 지났을 때
-                embed = discord.Embed(title="", description="1시간 마다 받을 수 있습니다.", color=0xFF0000)
+                embed = discord.Embed(title="", description="1분 마다 받을 수 있습니다.", color=0xFF0000)
                 await message.channel.send(embed=embed)
                 return
             elif TIME - timeA[idA.index(ID)] >= 60:
@@ -172,6 +171,4 @@ async def on_message(message):
 
 
 
-
-token = open("token_key.txt", "r").readline
-bot.run("token")
+bot.run(TOKEN)
