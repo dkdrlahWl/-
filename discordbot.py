@@ -42,7 +42,15 @@ async def on_message(message):
         embed = discord.Embed(title="명령어", description="봇 명령어", color=0x62C1CC)
         embed.add_field(name="도박", value="돈, 돈받기, 도박 <금액>, 올인, 랭킹, 송금 <금액> <@대상>", inline=True)
         await message.channel.send("", embed=embed)
-
+        
+    if cmd == prefix + "돈추가":
+        giving = 10000
+        if ID in idA:  # ID가 있으면 돈을 더함
+            moneyA[idA.index(ID)] += giving
+        embed = discord.Embed(title="", description=format(giving,) + "원 만큼 받았습니다. 현재 돈: " + format(moneyA[idA.index(ID)]) + "원", color=0x00FF00,)
+        await message.channel.send(embed=embed)     
+   
+        
     if cmd == prefix + "돈받기" or cmd == prefix + "ㄷㅂㄱ":
         TIME = int(time.time())
         if ID in idA:
