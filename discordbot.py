@@ -63,14 +63,6 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
 
-    if cmd == prefix + "돈추가":
-        giving = 10000
-        if ID in idA:  # ID가 있으면 돈을 더함
-            moneyA[idA.index(ID)] += giving
-        embed = discord.Embed(title="",description=format(giving,) + "원 만큼 받았습니다. 현재 돈: " + format(moneyA[idA.index(ID)]) + "원",color=0x00FF00,)
-        await message.channel.send(embed=embed)
-
-
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
             embed = discord.Embed(title="",description=format(moneyA[idA.index(ID)], ",d") + " 원",color=0xFF00FF,)
