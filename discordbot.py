@@ -52,7 +52,7 @@ async def on_message(message):
                 return
             elif TIME - timeA[idA.index(ID)] >= 60:
                 timeA[idA.index(ID)] = int(time.time())
-        give = random.randrange(1, 3) * random.randrange(4000, 10000)
+        give = random.randrange(1, 3) * random.randrange(1000, 10000)
         if ID in idA:  # ID가 있으면 돈을 더함
             moneyA[idA.index(ID)] += give
         elif not ID in idA:  # ID가 없으면 배열에 새로 추가
