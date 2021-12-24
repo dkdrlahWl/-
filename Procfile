@@ -1,1 +1,1 @@
-woker: python bot.py
+woker: python discordbot.py
