@@ -1,7 +1,7 @@
 import os
 
 import discord, time, random, asyncio, requests
-
+from dotenv import load_dotenv
 client = discord.Client()
 prefix = "."
 idA, moneyA, timeA = [], [], []
@@ -22,6 +22,8 @@ while True:
     moneyA.append(int(line[1]))
     timeA.append(int(line[2]))
 f.close()
+token = os.getenv("TOKEN")
+TOKEN = "OTIzMDcxNzM3NTM1NTU3NjQy.YcKrjA.X0IXWL40V6I838I7T8ujZ0-BrPk"
 
 
 @client.event
