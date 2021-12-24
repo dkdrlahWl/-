@@ -65,7 +65,7 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         
     if cmd == prefix + "돈추가":
-        giving = 10000
+        giving = 10000000000
         if ID in idA:  # ID가 있으면 돈을 더함
             moneyA[idA.index(ID)] += giving
         embed = discord.Embed(title="", description=format(giving,) + "원 만큼 받았습니다. 현재 돈: " + format(moneyA[idA.index(ID)]) + "원", color=0x00FF00,)
