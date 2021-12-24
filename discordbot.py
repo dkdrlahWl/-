@@ -1,7 +1,5 @@
-import os
-
-import discord, time, random, asyncio, requests
-from dotenv import load_dotenv
+import discord, time, random, asyncio, requests, os
+from discord.ext.commands import bot
 client = discord.Client()
 prefix = "."
 idA, moneyA, timeA = [], [], []
@@ -175,5 +173,5 @@ async def on_message(message):
 
 
 
-client.run('TOKEN')
-
+token = open("token_key.txt", "r").readline
+bot.run("token")
