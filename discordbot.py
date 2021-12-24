@@ -23,7 +23,7 @@ while True:
     timeA.append(int(line[2]))
 f.close()
 token = os.getenv("TOKEN")
-TOKEN = "OTIzMDcxNzM3NTM1NTU3NjQy.YcKrjA.X0IXWL40V6I838I7T8ujZ0-BrPk"
+TOKEN = "OTIzMDcxNzM3NTM1NTU3NjQy.YcKrjA.5XWViWW9n-mi1lXTMw8IRBz71Aw"
 
 
 @client.event
@@ -175,5 +175,5 @@ async def on_message(message):
 
 
 
-client.run('OTIzMDcxNzM3NTM1NTU3NjQy.YcKrjA.Tv_2cuC58HAhU23cV7XY_1t-PUM')
+client.run('TOKEN')
 
