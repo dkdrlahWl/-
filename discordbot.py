@@ -62,6 +62,15 @@ async def on_message(message):
         embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다. 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x00FF00,)
         await message.channel.send(embed=embed)
 
+
+    if cmd == prefix + "돈추가":
+        giving = 10000
+        if ID in idA:  # ID가 있으면 돈을 더함
+            moneyA[idA.index(ID)] += giving
+        embed = discord.Embed(title="",description=format(giving,) + "원 만큼 받았습니다. 현재 돈: " + format(moneyA[idA.index(ID)]) + "원",color=0x00FF00,)
+        await message.channel.send(embed=embed)
+
+
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
             embed = discord.Embed(title="",description=format(moneyA[idA.index(ID)], ",d") + " 원",color=0x118811,)
@@ -132,7 +141,7 @@ async def on_message(message):
                 rank += (str(i + 1)+ "위 <@"+ rankA[i][0]+ "> : "+ format(rankA[i][1], ",d")+ "\n")
             except:
                 break
-        embed = discord.Embed(title="돈 랭킹", description=rank, color=0xD8AA2D)
+        embed = discord.Embed(title="봇1시즌 돈 랭킹", description=rank, color=0xD8AA2D)
         await message.channel.send(embed=embed)
 
     if cmd == prefix + "송금" or cmd == prefix + "ㅅㄱ":
