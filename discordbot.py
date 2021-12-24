@@ -65,7 +65,7 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         
     if cmd == prefix + "돈추가":
-        giving = 10000000000
+        giving = 1000000
         if ID in idA:  # ID가 있으면 돈을 더함
             moneyA[idA.index(ID)] += giving
         embed = discord.Embed(title="", description=format(giving,) + "원 만큼 받았습니다. 현재 돈: " + format(moneyA[idA.index(ID)]) + "원", color=0x00FF00,)
@@ -86,11 +86,11 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             return
         givee = random.randrange(2, 12)
-        give = random.randrange(2, 4)  # 성공확률 : 4/9
+        give = random.randrange(2, 3)  # 성공확률 : 4/9
         count = await message.channel.send("배수 정하는 중 ...")
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
         await count.edit(content="만약 성공하면 건 돈의 " + str(give) + "배 를 얻어요")
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
         if givee % 2 == 0:
             moneyA[idA.index(ID)] *= give
             await count.edit(
@@ -118,11 +118,11 @@ async def on_message(message):
             return
         moneyA[idA.index(ID)] -= args[0]
         givee = random.randrange(2, 12)
-        give = random.randrange(2, 4)  # 성공확률 4/9
+        give = random.randrange(2, 3)  # 성공확률 4/9
         count = await message.channel.send("배수 정하는 중 ...")
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
         await count.edit(content="만약 성공하면 건 돈의 " + str(give) + "배 를 얻어요")
-        await asyncio.sleep(1)
+        await asyncio.sleep(0)
         if givee % 2 == 0:
             moneyA[idA.index(ID)] += give * args[0]
             await count.edit(
