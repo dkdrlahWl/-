@@ -47,7 +47,7 @@ async def on_message(message):
         TIME = int(time.time())
         if ID in idA:
             if TIME - timeA[idA.index(ID)] < 60:  # 시간이 아직 안 지났을 때
-                embed = discord.Embed(title="", description="1분 마다 받을 수 있습니다.", color=0x00FFFF)
+                embed = discord.Embed(title="", description="1분 마다 받을 수 있습니다.", color=0xFF00FF)
                 await message.channel.send(embed=embed)
                 return
             elif TIME - timeA[idA.index(ID)] >= 60:
@@ -59,7 +59,7 @@ async def on_message(message):
             idA.append(ID)
             moneyA.append(give)
             timeA.append(int(time.time()))
-        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x00FF00,)
+        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0xFF00FF,)
         await message.channel.send(embed=embed)
 
 
