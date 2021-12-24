@@ -52,14 +52,14 @@ async def on_message(message):
                 return
             elif TIME - timeA[idA.index(ID)] >= 60:
                 timeA[idA.index(ID)] = int(time.time())
-        give = random.randrange(1, 3) * random.randrange(1000, 10000)
+        give = random.randrange(1, 3) * random.randrange(4000, 10000)
         if ID in idA:  # ID가 있으면 돈을 더함
             moneyA[idA.index(ID)] += give
         elif not ID in idA:  # ID가 없으면 배열에 새로 추가
             idA.append(ID)
             moneyA.append(give)
             timeA.append(int(time.time()))
-        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=a500ff,)
+        embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x00FF00,)
         await message.channel.send(embed=embed)
 
 
