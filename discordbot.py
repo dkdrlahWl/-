@@ -103,7 +103,7 @@ async def on_message(message):
 
     if cmd == prefix + "도박" or cmd == prefix + "ㄷㅂ":
         if len(args) != 1:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: !도박 돈", color=0xFF0000)
+            embed = discord.Embed(title="오류", description="사용법: .도박 돈", color=0xFF0000)
             await message.channel.send(embed=embed)
             return
         if args[0].isdecimal() == False:  # 숫자가 입력되지 않았을 때
@@ -146,7 +146,7 @@ async def on_message(message):
 
     if cmd == prefix + "송금" or cmd == prefix + "ㅅㄱ":
         if len(args) != 2 or args[0][3:-1] in idA:  # 만약 인자 수가 잘못됬거나 순서가 바뀌었을 때
-            embed = discord.Embed(title="오류", description="사용법: !송금 돈 @유저이름", color=0xFF0000)
+            embed = discord.Embed(title="오류", description="사용법: .송금 돈 @유저이름", color=0xFF0000)
             await message.channel.send(embed=embed)
             return
         if not args[1][3:-1] in idA:  # 송금대상의 ID가 없을 때
