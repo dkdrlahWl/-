@@ -145,6 +145,11 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             return
         if not args[1][3:-1] in idA:  # 송금대상의 ID가 없을 때
+            give = 0
+            ID = args[1]
+            idA.append(ID)
+            moneyA.append(give)
+            timeA.append(int(time.time()))
             embed = discord.Embed(title="오류", description="송금대상이 등록된 ID가 아닙니다", color=0xFF0000)
             await message.channel.send(embed=embed)
             return
