@@ -68,10 +68,7 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         
         
-    if cmd == prefix + "상점" or cmd == prefix + "ㅅㅈ":
-        embed = discord.Embed(title="상점", description="", color=0x62C1CC)
-        embed.add_field(name="list", value="레벨업팩 1급 : 5만 | 1 ~ 2업 \n\n 레벨업팩 2급 : 20만 | 1 ~ 10업\n\n 레벨업팩 3급 : 100만 | 1 ~ 50업\n\n 레벨업팩 4급 : 300만 | 1 ~ 150업\n\n 레벨업팩 5급 : 900만 | 1 ~ 450업\n\n 레벨업팩 6급 : 5000만 | 1 ~ 5000업\n\n 레벨업팩 7급 : 5억 | 1 ~ 50000업\n\n 레벨업팩 8급 : 55억 | 1 ~ 450000업\n", inline=True)
-        await message.channel.send("", embed=embed)
+
     
 
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
@@ -161,7 +158,8 @@ async def on_message(message):
                 break
         embed = discord.Embed(title="봇1시즌 돈 랭킹", description=rank, color=0xD8AA2D)
         await message.channel.send(embed=embed)
-        return
+       
+    
     if cmd == prefix + "레벨랭킹" or cmd == prefix + "ㄹㅂㄹㅋ":
         rank, rankA = "", []  # 모든 id와 돈을 담아 정렬할 2차원 배열 rankA
         for i in range(0, len(idA)):
@@ -174,7 +172,7 @@ async def on_message(message):
                 break
         embed = discord.Embed(title="봇1시즌 레벨 랭킹", description=rank, color=0xD8AA2D)
         await message.channel.send(embed=embed)
-        return
+        
 
 
     if cmd == prefix + "송금" or cmd == prefix + "ㅅㄱ":
@@ -386,7 +384,10 @@ async def on_message(message):
             levelA[idA.index(ID)] += level
             await message.channel.send(format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
 
-
+    if cmd == prefix + "상점" or cmd == prefix + "ㅅㅈ":
+        embed = discord.Embed(title="상점", description="", color=0x62C1CC)
+        embed.add_field(name="list", value="레벨업팩 1급 : 5만 | 1 ~ 2업 \n\n 레벨업팩 2급 : 20만 | 1 ~ 10업\n\n 레벨업팩 3급 : 100만 | 1 ~ 50업\n\n 레벨업팩 4급 : 300만 | 1 ~ 150업\n\n 레벨업팩 5급 : 900만 | 1 ~ 450업\n\n 레벨업팩 6급 : 5000만 | 1 ~ 5000업\n\n 레벨업팩 7급 : 5억 | 1 ~ 50000업\n\n 레벨업팩 8급 : 55억 | 1 ~ 450000업\n", inline=True)
+        await message.channel.send("", embed=embed)
 
     f = open("UserData.txt", "w")  # 바뀐 데이터 저장
     for i in range(0, len(idA), 1):
@@ -395,4 +396,4 @@ async def on_message(message):
     print(ID, cmd,)
 
 
-client.run(TOKEN)
+client.run("TOKEN")
