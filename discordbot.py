@@ -44,11 +44,6 @@ async def on_message(message):
         embed.add_field(name="도박", value="돈, 돈받기, 도박 <금액>, 올인, 랭킹, 레벨랭킹, 송금 <금액> <@대상>, 상점, 예시 : .레벨업팩1 할시 바로 구매 후 사용", inline=True)
         await message.channel.send("", embed=embed)
         
-
-    if cmd == prefix + "상점" or cmd == prefix + "ㅅㅈ":
-        embed = discord.Embed(title="상점", description="", color=0x62C1CC)
-        embed.add_field(name="list", value="레벨업팩 1급 : 5만 | 1 ~ 2업 \n\n 레벨업팩 2급 : 20만 | 1 ~ 10업\n\n 레벨업팩 3급 : 100만 | 1 ~ 50업\n\n 레벨업팩 4급 : 300만 | 1 ~ 150업\n\n 레벨업팩 5급 : 900만 | 1 ~ 450업\n\n 레벨업팩 6급 : 5000만 | 1 ~ 5000업\n\n 레벨업팩 7급 : 5억 | 1 ~ 50000업\n\n 레벨업팩 8급 : 55억 | 1 ~ 450000업\n", inline=True)
-        await message.channel.send("", embed=embed)
         
 
 
@@ -71,7 +66,13 @@ async def on_message(message):
             levelA.append(0)
         embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x500ff,)
         await message.channel.send(embed=embed)
-        return
+        
+        
+    if cmd == prefix + "상점" or cmd == prefix + "ㅅㅈ":
+        embed = discord.Embed(title="상점", description="", color=0x62C1CC)
+        embed.add_field(name="list", value="레벨업팩 1급 : 5만 | 1 ~ 2업 \n\n 레벨업팩 2급 : 20만 | 1 ~ 10업\n\n 레벨업팩 3급 : 100만 | 1 ~ 50업\n\n 레벨업팩 4급 : 300만 | 1 ~ 150업\n\n 레벨업팩 5급 : 900만 | 1 ~ 450업\n\n 레벨업팩 6급 : 5000만 | 1 ~ 5000업\n\n 레벨업팩 7급 : 5억 | 1 ~ 50000업\n\n 레벨업팩 8급 : 55억 | 1 ~ 450000업\n", inline=True)
+        await message.channel.send("", embed=embed)
+    
 
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
