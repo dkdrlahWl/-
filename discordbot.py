@@ -391,4 +391,4 @@ async def on_message(message):
     print(ID, cmd,)
 
 
-client.run("ToKEN")
+client.run("TOKEN")
