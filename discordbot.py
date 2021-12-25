@@ -1,7 +1,7 @@
 import discord, time, random, asyncio, requests, os
 from discord.ext.commands import bot
 client = discord.Client()
-prefix = "."
+prefix = ","
 idA, moneyA, timeA = [], [], []
 
 try:
