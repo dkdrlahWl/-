@@ -29,7 +29,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("------")
-    game = discord.Game("veta.ver 초기화")
+    game = discord.Game("veta.ver")
     await client.change_presence(status=discord.Status.online, activity=game)
 
 @client.event
