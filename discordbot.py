@@ -70,7 +70,7 @@ async def on_message(message):
             levelA.append(0)
         embed = discord.Embed(title="", description=format(give, ",d")+ "원 만큼 받았습니다 현재 돈: "+ format(moneyA[idA.index(ID)], ",d")+ "원",color=0x500ff,)
         await message.channel.send(embed=embed)
-
+        return
 
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
