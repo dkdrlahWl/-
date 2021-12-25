@@ -172,6 +172,30 @@ async def on_message(message):
             embed = discord.Embed(title="", description="송금을 성공하였습니다", color=0x118811)
             await message.channel.send(embed=embed)
 
+            
+            
+            
+    if cmd == prefix + "돈추가":
+        if len(args) != 1:  # 인자 수가 잘못됬을 때
+            embed = discord.Embed(title="오류", description="사용법: .도박 돈", color=0xFF0000)
+            await message.channel.send(embed=embed)
+            return
+        if args[0].isdecimal() == False:  # 숫자가 입력되지 않았을 때
+            embed = discord.Embed(title="", description="숫자만 입력해 주세요!", color=0xFF0000)
+            await message.channel.send(embed=embed)
+            return
+        args[0] = int(args[0])
+        if not ID in idA or moneyA[idA.index(ID)] - args[0] < 0:# 돈이 부족할 때
+            moneyA[idA.index(ID)] += args[0]
+            embed = discord.Embed(title="경고!", description="돈이 추가되었습니다", color=0x118811)
+            await message.channel.send(embed=embed)
+        if not ID in idA or moneyA[idA.index(ID)] - args[0] >= 0:# 돈이 부족할 때
+            moneyA[idA.index(ID)] += args[0]
+            embed = discord.Embed(title="경고!", description="돈이 추가되었습니다", color=0x118811)
+            await message.channel.send(embed=embed)
+        print(moneyA)
+            
+            
 
     f = open("UserData.txt", "w")  # 바뀐 데이터 저장
     for i in range(0, len(idA), 1):
