@@ -233,69 +233,6 @@ async def on_message(message):
             await message.channel.send(embed=embed)
             return
 
-    if cmd == prefix + "":
-        if len(args) != 2 or args[0][3:-1] in idA:  # 만약 인자 수가 잘못됬거나 순서가 바뀌었을 때
-            embed = discord.Embed(title="오류", description="사용법: .송금 돈 @유저이름", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not args[1][3:-1] in idA:  # 송금대상의 ID가 없을 때
-            give = 0
-            ID = args[1]
-            idA.append(ID)
-            moneyA.append(give)
-            timeA.append(int(time.time()))
-            embed = discord.Embed(title="오류", description="송금대상이 등록된 ID가 아닙니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA:  # 송금자의 ID가 없을 때
-            embed = discord.Embed(title="오류", description="잔액이 부족합니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if args[0].isdecimal() == False:  # 숫자가 입력되지 않았을 때
-            embed = discord.Embed(title="오류", description="숫자를 입력해주세요", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if moneyA[idA.index(ID)] < int(args[0]):  # 잔액이 부족할 때
-            embed = discord.Embed(title="오류", description="잔액이 부족합니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        else:  # 모든 이상이 없을 때
-            moneyA[idA.index(str(args[1][3:-1]))] += int(args[0])
-            embed = discord.Embed(title="", description="추가 성공하였습니다", color=0x118811)
-            await message.channel.send(embed=embed)
-
-    if cmd == prefix + "레벨지급":
-        if len(args) != 2 or args[0][3:-1] in idA:  # 만약 인자 수가 잘못됬거나 순서가 바뀌었을 때
-            embed = discord.Embed(title="오류", description="사용법: 지급 레벨 @유저이름", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not args[1][3:-1] in idA:  # 송금대상의 ID가 없을 때
-            give = 0
-            ID = args[1]
-            idA.append(ID)
-            moneyA.append(give)
-            timeA.append(int(time.time()))
-            levelA.append(int(0))
-            embed = discord.Embed(title="오류", description="송금대상이 등록된 ID가 아닙니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA:  # 송금자의 ID가 없을 때
-            embed = discord.Embed(title="오류", description="잔액이 부족합니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if args[0].isdecimal() == False:  # 숫자가 입력되지 않았을 때
-            embed = discord.Embed(title="오류", description="숫자를 입력해주세요", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if moneyA[idA.index(ID)] < int(args[0]):  # 잔액이 부족할 때
-            embed = discord.Embed(title="오류", description="잔액이 부족합니다", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        else:  # 모든 이상이 없을 때
-            levelA[idA.index(str(args[1][3:-1]))] += int(args[0])
-            embed = discord.Embed(title="", description="지급을 성공하였습니다", color=0x118811)
-            await message.channel.send(embed=embed)
-
    
 
     f = open("UserData.txt", "w")  # 바뀐 데이터 저장
