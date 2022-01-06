@@ -5,7 +5,7 @@ from discord.ext.commands import bot
 
 client = discord.Client()
 prefix = "."
-idA, moneyA, timeA, levelA, dagA = [], [], [], [], []
+idA, moneyA, timeA, levelA = [], [], [], []
 
 try:
     f = open("UserData.txt", "r")
@@ -51,13 +51,6 @@ async def on_message(message):
                         inline=True)
         await message.channel.send("", embed=embed)
 
-    if cmd == prefix + "칼":
-        embed = discord.Embed(title="", description="민지가 그린 검", color=0x62C1CC)
-        embed.add_field(name="공격력",value="999", inline=True)
-        embed.add_field(name="체력", value="999", inline=True)
-        embed.set_thumbnail(url="https://ifh.cc/g/4AS1lL.png")
-        await message.channel.send("", embed=embed)
-
     if cmd == prefix + "돈받기" or cmd == prefix + "ㄷㅂㄱ":
         TIME = int(time.time())
         if ID in idA:
@@ -80,54 +73,9 @@ async def on_message(message):
 
 
 
-    if cmd == prefix + "가방":
-        embed = discord.Embed(title="인벤토리", description="", color=0x00FFFF)
-        await message.channel.send(embed=embed)
-        return
-
-
-    if cmd == prefix + "레벨도박" or cmd == prefix + "ㄹㅂㄷㅂ":
-        if len(args) != 1:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: .레벨도박 돈", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if args[0].isdecimal() == False:  # 숫자가 입력되지 않았을 때
-            embed = discord.Embed(title="", description="숫자만 입력해 주세요!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        args[0] = int(args[0])
-        if not ID in idA or levelA[idA.index(ID)] - args[0] < 0:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="레벨이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        levelA[idA.index(ID)] -= args[0]
-        givee12 = random.randrange(1, 11)
-        giv = random.randrange(900000, 1200001)
-        count = await message.channel.send("배수 정하는 중 ...")
-        await asyncio.sleep(2)
-        await count.edit(content="만약 성공하면 건 레벨의 " + str(giv) + "배 를 얻어요")
-        await asyncio.sleep(2)
-        if givee12 == 5:
-            moneyA[idA.index(ID)] += giv * args[0]
-            await count.edit(
-                content="도박 성공! 현재 돈: " + format(moneyA[idA.index(ID)], ",d") + "원"
-            )
-        elif givee12 != 5:
-            await count.edit(
-                content="도박 실패... 현재 돈: " + format(moneyA[idA.index(ID)], ",d") + "원"
-            )
 
 
 
-
-
-
-    if cmd == prefix + "상점" or cmd == prefix + "ㅅㅈ":
-        embed = discord.Embed(title="상점", description="", color=0x62C1CC)
-        embed.add_field(name="list",
-                        value="레벨업팩 1급 : 10만 | 1업 \n\n 레벨업팩 2급 : 20만 | 2업\n\n 레벨업팩 3급 : 60만 | 6업\n\n 레벨업팩 4급 : 100만 | 10업\n\n레벨업팩 5급 : 150만 | 15업\n\n레벨업팩 6급 : 210만 | 21업\n\n  레벨업팩 7급 : 300만 | 30업\n",
-                        inline=True)
-        await message.channel.send("", embed=embed)
 
     if cmd == prefix + "돈" or cmd == prefix + "ㄷ":
         if ID in idA:  # ID가 있을 때
@@ -350,120 +298,7 @@ async def on_message(message):
             embed = discord.Embed(title="", description="지급을 성공하였습니다", color=0x118811)
             await message.channel.send(embed=embed)
 
-    if cmd == prefix + "레벨업팩1":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 100000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 100000
-        level = random.randrange(1, 2)  # 4~11
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩2":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 200000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 200000
-        level = random.randrange(2, 3)  # 4~11
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩3":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 600000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 600000
-        level = random.randrange(6, 7)  # 4~14
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩4":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 1000000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 1000000
-        level = random.randrange(10, 11)  # 4~14
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩5":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 1500000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 1500000
-        level = random.randrange(15, 16)  # 4~14
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩6":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 2100000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 2100000
-        level = random.randrange(21, 22)
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-    if cmd == prefix + "레벨업팩7":
-        if len(args) != 0:  # 인자 수가 잘못됬을 때
-            embed = discord.Embed(title="오류", description="사용법: 레벨업팩(번호)", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        if not ID in idA or moneyA[idA.index(ID)] < 3000000:  # 돈이 부족할 때
-            embed = discord.Embed(title="", description="돈이 부족합니다!", color=0xFF0000)
-            await message.channel.send(embed=embed)
-            return
-        moneyA[idA.index(ID)] -= 3000000
-        level = random.randrange(30, 31)
-        if ID in idA:
-            levelA[idA.index(ID)] += level
-            await message.channel.send(
-                format(level) + " " + "level up 하셨습니다" + "\n" + "현재 level : " + format(levelA[idA.index(ID)]))
-
-
-
+   
 
     f = open("UserData.txt", "w")  # 바뀐 데이터 저장
     for i in range(0, len(idA), 1):
