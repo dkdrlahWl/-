@@ -1,7 +1,5 @@
-from typing import List
+import discord, time, random, asyncio, os
 
-import discord, time, random, asyncio, requests, os
-from discord.ext.commands import bot
 
 client = discord.Client()
 prefix = "."
